@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capital Gains and Income Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <style>
+        #circularcursor {
+            background-color: transparent;
+            border: 1px solid black;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            position: absolute;
+            z-index: 1;
+            transition: 0.2s;
+        }
+
+        .navbar {
+            background-color: #28a745;
+            /* Green navbar background color */
+        }
+
+        nav a:hover {
+            background-color: #9ae2e2;
+
+        }
+
+        .navbar-dark .navbar-toggler-icon {
+            background-color: #fff;
+            /* White color for the toggler icon */
+        }
+
+        .navbar-brand,
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            /* White text color for links and brand */
+        }
+
+        .navbar-brand:hover,
+        .navbar-nav .nav-link:hover {
+            color: #fff !important;
+            /* White text color on hover */
+        }
+
+        .navbar-toggler {
+            border-color: #fff;
+            /* White border color for toggler button */
+        }
+
+        .navbar-toggler:focus,
+        .navbar-toggler:active {
+            outline: none;
+            /* Remove focus outline */
+            box-shadow: none;
+            /* Remove box shadow on focus */
+        }
+
+        .dropdown-menu {
+            background-color: #333;;
+            /* Green dropdown background color */
+        }
+
+        .dropdown-item {
+            color: #fff ;
+            /* White text color for dropdown items */
+        }
+
+        .dropdown-item:hover {
+            background-color: #d9e0da;
+            color: black;
+            /* Darker green on hover */
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: rgb(228, 233, 235);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #flex-container {
+            display: flex;
+            justify-content: left;
+            flex-direction: row;
+            position: relative;
+            top: 70px;
+            gap: 1%;
+            margin: 2%;
+        }
+
+        .flex-child {
+            height: 100px;
+            width: 100px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            margin-top: 10px;
+            margin: 2%;
+            display: flex;
+            align-items: center;
+            padding: 1%;
+        }
+
+        .flex-child:hover {
+            height: 170px;
+            width: 170px;
+            transition: 0.5s;
+            cursor: pointer;
+            padding: 1%;
+        }
+
+        h1 {
+            margin-top: 100px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: black;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            color: gray;
+            font-weight: light;
+            font-size: small;
+        }
+
+        button {
+            background-color: black;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: darkgray;
+        }
+
+        p {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        #shortSpan,
+        #longSpan {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="circularcursor"></div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+
+                <!-- Dropdown example -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="page1.html">Tax Residency </a>
+                        <a class="dropdown-item" href="page2.html">Tax Filing Eligibility</a>
+                        <a class="dropdown-item" href="page3.html">Tax Calculator based on Income</a>
+                        <a class="dropdown-item" href="page4.html">Basic Tax calculator</a>
+                        <a class="dropdown-item" href="page5.html">HRA</a>
+                        <a class="dropdown-item" href="page6.html">ATD Calculator</a>
+                        <a class="dropdown-item" href="page7.html">House Property Income</a>
+
+                        <a class="dropdown-item" href="page9.html">Capital Gains and Income</a>
+                        <a class="dropdown-item" href="page10.html">Home Loan Credit Calculator</a>
+                        <a class="dropdown-item" href="page11.html">Agriculture Tax Calculator</a>
+                        <a class="dropdown-item" href="page12.html">Remittance Tax</a>
+                        <a class="dropdown-item" href="page13.html">Gift Tax Calculator</a>
+                        <a class="dropdown-item" href="page14.html">Penalty Tax</a>
+
+                        <a class="dropdown-item" href="page16.html">Income Surcharge</a>
+                        <a class="dropdown-item" href="page17.html">Education Cess Calculator</a>
+                        <a class="dropdown-item" href="page18.html">Tax Deduction Calculator</a>
+                        <a class="dropdown-item" href="taxform.html">Tax Form</a>
+                        <a class="dropdown-item" href="huf.html">HUF Calculator</a>
+                        <a class="dropdown-item" href="table.html">ITR Table</a>
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="flex-container">
+        <div class="flex-child" id="longTerm"></div>
+        <div class="flex-child" id="shortTerm"></div>
+    </div>
+    <div class="container">
+        <h1>Capital Gains and Income Calculator</h1>
+
+        <!-- Capital Gains Section -->
+        <label for="costOfAcquisition">Enter the cost of acquisition of asset:</label>
+        <input type="number" id="costOfAcquisition" placeholder="Enter cost of acquisition">
+        <br>
+        <label for="sellingPrice">Enter the selling price of the asset:</label>
+        <input type="number" id="sellingPrice" placeholder="Enter selling price">
+        <br>
+        <label for="purchaseYear">Enter the purchase year of the asset (in format YYYY):</label>
+        <input type="number" id="purchaseYear" placeholder="Enter purchase year">
+        <br>
+        <label for="saleYear">Enter the sale year of the asset (in format YYYY):</label>
+        <input type="number" id="saleYear" placeholder="Enter sale year">
+        <br>
+        <label for="costOfImprovements">Enter the cost of any improvements made to the asset:</label>
+        <input type="number" id="costOfImprovements" placeholder="Enter cost of improvements">
+        <br>
+        <button id="capitalGainsBtn">Calculate Capital Gains</button>
+        <br>
+        <p id="capitalGainsResult"></p>
+
+        <!-- Income Section -->
+        <label for="fixedDeposit">Enter the amount in fixed deposit:</label>
+        <input type="number" id="fixedDeposit" placeholder="Enter fixed deposit amount">
+        <br>
+        <label for="interestRate">Enter the rate of interest:</label>
+        <input type="number" id="interestRate" placeholder="Enter interest rate">
+        <br>
+        <label for="duration">Enter the duration in months:</label>
+        <input type="number" id="duration" placeholder="Enter duration">
+        <br>
+        <button id="interestIncomeBtn">Calculate Interest Income</button>
+        <br>
+        <p id="interestIncomeResult"></p>
+
+        <label for="dividendIncome">Enter the amount of dividend income:</label>
+        <input type="number" id="dividendIncome" placeholder="Enter dividend income amount">
+        <br>
+        <button id="dividendIncomeBtn">Calculate Dividend Income</button>
+        <br>
+        <p id="dividendIncomeResult"></p>
+    </div>
+
+    <script type="module">
+        const jsonData = localStorage.getItem('jsonData')
+        const data = JSON.parse(jsonData)
+
+        const longTerm = document.getElementById('longTerm')
+        const shortTerm = document.getElementById('shortTerm')
+
+        const longVal = data.ITR.ITR2.ScheduleCGFor23.ShortTermCapGainFor23.TotalSTCG
+        const shortVal = data.ITR.ITR2.ScheduleCGFor23.LongTermCapGain23.TotalLTCG
+
+
+        longTerm.innerHTML = `<p>Long Term Capital Gain</p>`
+        shortTerm.innerHTML = `<p>Short Term Capital Gain</p>`
+
+        longTerm.addEventListener('mouseenter', () => {
+            longTerm.innerHTML = `<p>Long Term Capital Gain <br>Gain: <span id="longSpan">${longVal} </span> </br></p>`
+        })
+
+        longTerm.addEventListener('mouseleave', () => {
+            longTerm.innerHTML = `<p>Long Term Capital Gain</p>`
+        })
+
+        shortTerm.addEventListener('mouseenter', () => {
+            shortTerm.innerHTML = `<p>Short Term Capital Gain <br>Gain: <span id="shortSpan">${shortVal} </span> </br></p>`
+        })
+
+        shortTerm.addEventListener('mouseleave', () => {
+            shortTerm.innerHTML = `<p>Short Term Capital Gain</p>`
+        })
+
+
+
+        const gainsBtn = document.getElementById('capitalGainsBtn')
+        const interestsBtn = document.getElementById('interestIncomeBtn')
+        const dividendBtn = document.getElementById('dividendIncomeBtn')
+
+        gainsBtn.addEventListener('click', calculateCapitalGains)
+        interestsBtn.addEventListener('click', calculateInterestIncome)
+        dividendBtn.addEventListener('click', calculateDividendIncome)
+        function calculateCapitalGains() {
+            const costOfAcquisition = parseFloat(document.getElementById("costOfAcquisition").value);
+            const sellingPrice = parseFloat(document.getElementById("sellingPrice").value);
+            const purchaseYear = parseInt(document.getElementById("purchaseYear").value);
+            const saleYear = parseInt(document.getElementById("saleYear").value);
+            const costOfImprovements = parseFloat(document.getElementById("costOfImprovements").value);
+
+            const holdingPeriod = saleYear - purchaseYear;
+
+            if (holdingPeriod >= 24) {
+                const indexationTable = {
+                    2001: 100, 2002: 105, 2003: 109, 2004: 113, 2005: 117, 2006: 122, 2007: 129, 2008: 137,
+                    2009: 148, 2010: 167, 2011: 184, 2012: 200, 2013: 220, 2014: 240, 2015: 254, 2016: 264,
+                    2017: 272, 2018: 280, 2019: 289, 2020: 301, 2021: 317, 2022: 331
+                };
+
+                const indexedCost = costOfAcquisition * (indexationTable[saleYear] / indexationTable[purchaseYear]) + costOfImprovements;
+                const longTermCapitalGains = sellingPrice - indexedCost;
+
+                document.getElementById("capitalGainsResult").innerHTML = `Indexed cost: ${indexedCost.toFixed(2)}<br>Long-term capital gains: ${longTermCapitalGains.toFixed(2)}`;
+            } else {
+                const shortTermCapitalGains = sellingPrice - (costOfAcquisition + costOfImprovements);
+                document.getElementById("capitalGainsResult").innerHTML = `Short-term capital gains: ${shortTermCapitalGains.toFixed(2)}`;
+            }
+        }
+
+        function calculateInterestIncome() {
+            const fixedDeposit = parseFloat(document.getElementById("fixedDeposit").value);
+            const interestRate = parseFloat(document.getElementById("interestRate").value);
+            const duration = parseInt(document.getElementById("duration").value);
+
+            const interestIncome = (fixedDeposit * interestRate * duration) / (12 * 100);
+
+            document.getElementById("interestIncomeResult").innerHTML = `Interest Income: ${interestIncome.toFixed(2)}`;
+        }
+
+        function calculateDividendIncome() {
+            const dividendIncome = parseFloat(document.getElementById("dividendIncome").value);
+
+            document.getElementById("dividendIncomeResult").innerHTML = `Dividend Income: ${dividendIncome.toFixed(2)}`;
+        }
+
+        $(document).ready(function () {
+                $(document).on('mousemove', function (e) {
+                    $('#circularcursor').css({
+                        left: e.pageX,
+                        top: e.pageY
+                    });
+                })
+            });
+    </script>
+</body>
+
+</html>
